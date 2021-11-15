@@ -50,7 +50,7 @@
             <a href="#">Sign-up</a>
             <a href="#">Login</a>
             -->
-            <a href="Dashboard/profile.php">Dashboard</a>
+            <a href="dashboard/profile">Dashboard</a>
         </div>
 
     </div>
