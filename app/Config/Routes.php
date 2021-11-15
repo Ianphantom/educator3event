@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('login', 'AccountCtl::login');
 $routes->get('register', 'AccountCtl::register');
-$routes->get('dashboard/profile', 'DashboardCtl::profile');
+$routes->get('dashboard/profile', 'DashboardCtl::profile' , ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
