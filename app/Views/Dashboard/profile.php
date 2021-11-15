@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/AccountCtl/logout" class="nav-link text-dark bg-light">
                     <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>
                     <span>Logout</span>
                 </a>
