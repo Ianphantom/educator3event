@@ -29,7 +29,8 @@ class AccountCtl extends BaseController
     {
         helper(['form']);
         $rules = [
-            'username' => 'is_unique[akun.username]',
+            'username' => 'is_unique[akun.username]|min_length[3]',
+            'password' => 'min_length[3]',
         ];
         $bankModel = new BankModel();
         $bank = $bankModel->findAll();

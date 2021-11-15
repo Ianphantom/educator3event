@@ -19,11 +19,12 @@
             <div class="container">
 
                 <div class="row">
-
                     <div class="col-xl-8 offset-xl-2 py-5">
                         <?php if($error != ""){ ?>
-                            <div class="alert alert-danger" role="alert">
-                                Username sudah digunakan. Harap menggunakan UserName lain
+                            <div class="alert alert-danger text-center" role="alert">
+                                <?php foreach($error as $err){ ?>
+                                    <?php echo htmlentities($err); ?><br>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <form id="contact-form" method="post" action="<?php echo base_url() ?>/AccountCtl/registeringAccount" role="form">
