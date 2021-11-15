@@ -1,9 +1,4 @@
-<?php 
-    $msg = "";
-    if(isset($_GET['msg'])){
-        $msg = $_GET['msg'];
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +18,17 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
                         <h1 class="text-white">Selamat datang di EDUCATOR LOGIN PAGE!</h1>
-                        <?php if($msg != ""){?>
+                        <?php if(!empty(session()->getFlashdata('success'))){?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Selamat! </strong><?php echo htmlentities($msg); ?>
+                                <strong>Selamat! </strong><?php echo htmlentities(session()->getFlashdata('success')); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php } ?>
+                        <?php if(!empty(session()->getFlashdata('fail'))){?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Maaf! </strong><?php echo htmlentities(session()->getFlashdata('fail')); ?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -41,15 +44,15 @@
     <section class="container-fluid">
         <section class="row justify-content-center">
             <section class="col-12 col-sm-6 col-md-3">
-                <form class="form-container">
+                <form class="form-container" method="post" action="<?php echo base_url() ?>/AccountCtl/loggingAccount" role="form">
                     <div class="row justify-content-center mb-3">
                         <img src="../assets/img/favicon.ico" class="w-25" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="UserName">
+                        <input name="username" type="text" class="form-control" id="exampleInputUsername1" placeholder="UserName">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
