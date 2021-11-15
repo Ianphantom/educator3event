@@ -1,3 +1,9 @@
+<?php 
+    $msg = "";
+    if(isset($_GET['msg'])){
+        $msg = $_GET['msg'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +23,14 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
                         <h1 class="text-white">Selamat datang di EDUCATOR LOGIN PAGE!</h1>
+                        <?php if($msg != ""){?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Selamat! </strong><?php echo htmlentities($msg); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php } ?>
                         <p class="text-lead text-white">Masukan detail anda pada form dibawah.</p>
                     </div>
                 </div>
