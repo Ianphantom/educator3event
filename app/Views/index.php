@@ -50,7 +50,12 @@
             <a href="#">Sign-up</a>
             <a href="#">Login</a>
             -->
-            <a href="dashboard/profile">Dashboard</a>
+            <?php 
+                if(session()->has('loggedUser')){ ?>
+                    <a href="<?php echo base_url('dashboard/profile') ?>">Dashboard</a>
+            <?php }else{ ?>
+                    <a href="<?php echo base_url('login') ?>">Login</a>
+            <?php } ?>
         </div>
 
     </div>
