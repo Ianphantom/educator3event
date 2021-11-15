@@ -33,6 +33,13 @@ class AccountCtl extends BaseController
         return redirect()->to(base_url('dashboard/profile'));
     }
 
+    public function logout(){
+        if($session()->has('loggedUser')){
+            session()->remove('loggedUser');
+            return redirect()->to(base_url('login'));
+        }
+    }
+
     public function register()
     {
         $bankModel = new BankModel();
