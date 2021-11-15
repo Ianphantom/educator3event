@@ -14,6 +14,25 @@ class AccountCtl extends BaseController
         return view('login/login');
     }
 
+    public function loggingAccount()
+    {
+        $userModel = new AccountModel();
+        $user = $userModel->where("username", $this->request->getVar('username'))->first();
+        if(!$user){
+            session()->setFlashdata('fail', 'email atau password salah');
+            return redirect()->to(base_url('login'))->withInput();
+        }
+        $verify = password_verify($this->request->getVar('password'), $user['password']);
+        if(!$verify){
+            session()->setFlashdata('fail', 'email atau password salah');
+            return redirect()->to(base_url('login'))->withInput();
+        }
+
+        $user_id = $user['id'];
+        session()->set('loggedUser', $user_id);
+        return redirect()->to(base_url('dashboard/profile'));
+    }
+
     public function register()
     {
         $bankModel = new BankModel();
@@ -56,6 +75,6 @@ class AccountCtl extends BaseController
         ];
         $accountModel = new AccountModel();
         $registering = $accountModel->save($inputData);
-        return redirect()->to(base_url('/login?msg=Pendaftaran%20akun%20berhasil'));
+        return redirect()->to(base_url('/login'))->with('success', 'Pendaftaran akun berhasil');
     }
 }
