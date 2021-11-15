@@ -1,0 +1,118 @@
+body {
+  background: #1f9288;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h5 {
+  width: 105px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1rem;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+.nav-link {
+  text-transform: capitalize;
+}
+
+.nav-link:hover {
+  background: #f3f2f2;
+}
+
+.text-primary {
+  color: #7579e7 !important;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -12rem;
+    z-index: 2;
+  }
+
+  #sidebar.active {
+    margin-left: 0;
+  }
+
+  .vertical-nav {
+    min-width: 12rem;
+    width: 12rem;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+  }
+
+  .page-content {
+    width: calc(100% - 12rem);
+    margin-left: 12rem;
+    transition: all 0.4s;
+  }
+
+  .form-back {
+    z-index: -1;
+  }
+
+  #sidebarCollapse {
+    float: right;
+    margin: 0;
+  }
+
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+
+  #content.active div form h2 p {
+    margin-left: 12rem;
+    width: calc(100% - 12rem);
+  }
+
+  #form-content.active {
+    z-index: -1;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+}

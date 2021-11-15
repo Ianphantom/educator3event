@@ -1,0 +1,21 @@
+body {
+  background: #1f9288;
+  padding-top: 15vh;
+}
+
+form {
+  background: #fff;
+}
+
+.form-container {
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 0px 10px 0px;
+}
+
+.circle {
+  height: 100px;
+  width: 100px;
+  line-height: 20px;
+  border-radius: 50%;
+}

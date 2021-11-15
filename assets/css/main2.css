@@ -1,0 +1,68 @@
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+}
+
+#hello {
+  background: #1f9288
+    url("https://educator.co.id/assets/images/template/study.svg");
+  background-size: cover;
+  color: white;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#hello-caption {
+  width: 100%;
+}
+
+#copyright {
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  background: #1f9288;
+  color: white;
+}
+body {
+  margin: 0;
+}
+
+.navigation {
+  overflow: hidden;
+  background-color: #1f9288;
+}
+
+.navigation a {
+  padding: 16px 16px;
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  color: grey;
+}
+
+.navigation a.active:hover {
+  color: black;
+}
+
+.navigation a.active {
+  background-color: rgb(36, 36, 36);
+  color: white;
+}
+
+.login-signup {
+  float: right;
+}
+mark {
+  background-color: #b3ddd9;
+  color: black;
+}
