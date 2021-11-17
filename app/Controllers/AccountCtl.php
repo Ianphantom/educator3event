@@ -74,11 +74,11 @@ class AccountCtl extends BaseController
             'password'      => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'nama_lengkap'  => $this->request->getVar('name'),
             'tgl_lahir'     => $this->request->getVar('tanggal'),
-            'institusi'     => $this->request->getVar('instutusi'),
-            'whatsapp'      => $this->request->getVar('number'),
+            'institusi'     => $this->request->getVar('institusi'),
+            'whatsapp'      => $this->request->getVar('phone'),
             'bank_id'       => $this->request->getVar('namaBank'),
             'bank_nomor'    => $this->request->getVar('norek'),
-            'bank_nama'     => $this->request->getVar('namarek'),
+            'bank_nama'     => $this->request->getVar('namerek'),
         ];
         $accountModel = new AccountModel();
         $registering = $accountModel->save($inputData);

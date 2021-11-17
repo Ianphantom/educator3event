@@ -69,14 +69,11 @@
 
 
     <div class="page-content p-5" id="content">
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-
                     <table id="example" class="display responsive nowrap" style="width: 100%">
                         <p style="font-size: 20px; font-weight: 900;">Available Events</p>
-
                         <thead class="table-light">
                             <tr>
                                 <th>JUDUL</th>
@@ -87,34 +84,22 @@
                                 <th></th>
                             </tr>
                         </thead>
-
-                        <tbody class="table-light">
-                            <tr>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>
-                                    <div class="row">
-                                        <i class="fa fa-shopping-cart" style="font-size:30px;color:black"></i>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>
-                                    <div class="row">
-                                        <i class="fa fa-shopping-cart" style="font-size:30px;color:black"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <?php foreach ($event as $e) : ?>
+                            <tbody class="table-light">
+                                <tr>
+                                    <td><?= $e['nama_acara']?></td>
+                                    <td><?= $e['kuota']?></td>
+                                    <td><?= $e['harga_normal']?></td>
+                                    <td><?= $e['harga_referral']?></td>
+                                    <td><?= $e['komisi_referral']?></td>
+                                    <td>
+                                        <div class="row">
+                                            <i class="fa fa-shopping-cart" style="font-size:30px;color:black"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        <?php endforeach ?>
                     </table><br>
                     <p class="lead text-white mb-0" style="font-weight: 600;"><mark>APA ITU REFERRAL ?</mark></p>
                     <p style="color: black;">Referral adalah program komisi jika kamu bisa mengajak teman untuk mengikuti event. Untuk mendapatkan kode referral kamu harus membuat akun terlebih dahulu, kemudian minta teman kamu untuk memasukkan username kamu ketika pembelian suatu event. Teman kamu dapat diskon, dan kamu dapat komisi! komisi akan diberikan setelah acara selesai.</p>

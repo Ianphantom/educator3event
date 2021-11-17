@@ -126,10 +126,8 @@
                                     <div class=" col-lg 10">
                                         <button style="height: 50px;width: 20%;border: none;outline: none;border-radius: 60px;font-weight: 600;background: #1f9288;color: white;" >Daftar</button>
                                     </div>
-                                </div>
-                        
+                                </div>               
                         </form>
-
                     </div>
                 </div>
 

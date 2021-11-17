@@ -3,11 +3,19 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DashboardModel;
 
 class DashboardCtl extends BaseController
 {
     public function profile()
     {
-        return view('dashboard/profile');
+        $dashboardModel = new DashboardModel();
+        $dashboard = $dashboardModel->findAll();
+
+        $data = [
+            'dashboard' => $dashboard
+        ];
+
+        return view('dashboard/profile', $data);
     }
 }

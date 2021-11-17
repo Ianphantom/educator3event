@@ -61,7 +61,7 @@
                     </div>
                     <div class="mt-5">
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        <p class=" mb-0 text-center" style="margin-top: 10px; font-size: 15px;">Belum punya akun?&nbsp<br /><a href="Registration/regist.php" class="text-decoration-line">Daftar sekarang</a></p>
+                        <p class=" mb-0 text-center" style="margin-top: 10px; font-size: 15px;">Belum punya akun?&nbsp<br /><a href="<?= base_url('register')?>" class="text-decoration-line">Daftar sekarang</a></p>
                     </div>
                 </form>
             </section>
