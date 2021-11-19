@@ -3,13 +3,13 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\DashboardModel;
+use App\Models\AccountModel;
 
 class DashboardCtl extends BaseController
 {
     public function profile()
     {
-        $dashboardModel = new DashboardModel();
+        $dashboardModel = new AccountModel();
         $dashboard = $dashboardModel->findAll();
 
         $data = [
