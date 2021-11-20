@@ -10,7 +10,7 @@ class DashboardCtl extends BaseController
     public function profile()
     {
         $dashboardModel = new AccountModel();
-        $dashboard = $dashboardModel->findAll();
+        $dashboard = $dashboardModel->where('id', session()->get('loggedUser'))->first();
 
         $data = [
             'dashboard' => $dashboard
