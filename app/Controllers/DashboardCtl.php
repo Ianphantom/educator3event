@@ -9,13 +9,16 @@ class DashboardCtl extends BaseController
 {
     public function profile()
     {
-        $dashboardModel = new AccountModel();
-        $dashboard = $dashboardModel->where('id', session()->get('loggedUser'))->first();
-
+        $AccountModel = new AccountModel();
+        // $dashboard = $AccountModel->where('id', session()->get('loggedUser'));
+        // $dashboard = $AccountModel->getWhere(['id' => session()->get('loggedUser')]) -> getResult();
+        $dashboard = $AccountModel->getUserData(3);
+        // foreach($dashboard as $dash){
+        //     echo $dash->nama_lengkap;
+        // }
         $data = [
-            'dashboard' => $dashboard
+            'data' => $dashboard
         ];
-
         return view('dashboard/profile', $data);
     }
 }
