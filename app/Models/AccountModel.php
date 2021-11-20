@@ -39,4 +39,10 @@ class AccountModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    function getUserData($id = -1){
+        $query = "SELECT * FROM akun INNER JOIN bank ON bank.id=akun.bank_id WHERE akun.id='3'";
+        $res = $this->db->query($query);
+        return $res->getResult();
+    }
 }
