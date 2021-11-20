@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    foreach($data as $dashboard){ ?>
+    <!DOCTYPE html>
 <html>
 
 <head>
@@ -22,8 +24,8 @@
             <div class="media d-flex align-items-center text-wrap" style="width: 50px; height: 50px;">
                 <img src="https://educator.co.id/assets/images/icons/username.jpg" alt="" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                     <div class="media-body">
-                        <h5 class="m-0 small"><?php echo $dashboard['nama_lengkap']; ?></h5>
-                        <p class="font-weight-normal text-muted mb-0">BCA</p>
+                        <h5 class="m-0 small"><?php echo $dashboard->nama_lengkap; ?></h5>
+                        <p class="font-weight-normal text-muted mb-0"><?php echo $dashboard->nama_bank; ?></p>
                     </div>
             </div><!-- az-img-user -->
         </div>
@@ -91,14 +93,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Username: </label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Username" required="required" data-error="Username Diperlukan" value="<?php echo $dashboard['username'];?>">
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Username" required="required" data-error="Username Diperlukan" value="<?php echo $dashboard->username;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Nama Bank </label>
-                                    <input id="form_name" type="text" name="id" class="form-control" placeholder="Masukkan Nama Bank" required="required" data-error="Nama Bank Diperlukan" value="<?php echo $dashboard['bank_nama'];?>">
+                                    <input id="form_name" type="text" name="id" class="form-control" placeholder="Masukkan Nama Bank" required="required" data-error="Nama Bank Diperlukan" value="<?php echo $dashboard->nama_bank;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -107,14 +109,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_email">Nama Lengkap: </label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Nama Lengkap" required="required" data-error="Nama Lengkap Diperlukan" value="<?php echo $dashboard['nama_lengkap'];?>">
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Nama Lengkap" required="required" data-error="Nama Lengkap Diperlukan" value="<?php echo $dashboard->nama_lengkap;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_need">Tanggal Lahir:</label><br>
-                                    <input id="form_name" type="date" name="name" class="form-control" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard['tgl_lahir'];?>">
+                                    <input id="form_name" type="date" name="name" class="form-control" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard->tgl_lahir;?>">
                                     <div id="passwordHelpBlock" class="form-text">
                                     </div>
 
@@ -128,14 +130,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Institusi </label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Nama Institusi" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard['institusi'];?>">
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Nama Institusi" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard->institusi;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_lastname">Whatsapp: </label>
-                                    <input id="form_lastname" type="number" name="phone" class="form-control" placeholder="Masukkan Nomor Handphone Anda" required="required" data-error="Nomor Handphone Diperlukan" value="<?php echo $dashboard['whatsapp'];?>">
+                                    <input id="form_lastname" type="number" name="phone" class="form-control" placeholder="Masukkan Nomor Handphone Anda" required="required" data-error="Nomor Handphone Diperlukan" value="<?php echo $dashboard->whatsapp;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -145,7 +147,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Nomor Bank </label>
-                                    <input id="form_name" type="number" name="id" class="form-control" placeholder="Masukkan Nomor Bank" required="required" data-error="Nomor Bank Diperlukan" value="<?php echo $dashboard['bank_nomor'];?>">
+                                    <input id="form_name" type="number" name="id" class="form-control" placeholder="Masukkan Nomor Bank" required="required" data-error="Nomor Bank Diperlukan" value="<?php echo $dashboard->bank_nomor;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -181,3 +183,5 @@
 </body>
 
 </html>
+<?php }
+?>
