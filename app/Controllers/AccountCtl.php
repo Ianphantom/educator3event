@@ -105,4 +105,36 @@ class AccountCtl extends BaseController
         $updating = $accountModel->update(session()->get('loggedUser'),$inputData);
         return redirect()->to(base_url('dashboard/profile'));
     }
+
+    public function updatingPassword()
+    {
+        helper(['form']);
+        $rules = [
+            'password' => 'min_length[3]',
+        ];
+
+        $accountModel = new AccountModel();
+        // verifikasi Password 3 huruf
+        if(!$this-> validate($rules)){
+            session()->setFlashdata('fail', 'Password harus lebih dari 3 karakter');
+            return redirect()->to(base_url('dashboard/password'))->withInput();
+        }
+
+        // nyamakan password dan database
+        $id = session()->get('loggedUser');
+        $user = $accountModel->where('id', session()->get('loggedUser'))->first();
+        $verify = password_verify($this->request->getVar('password-lama'), $user['password']);
+        if(!$verify){
+            session()->setFlashdata('fail', 'Password lama anda salah!');
+            return redirect()->to(base_url('dashboard/password'))->withInput();
+        }
+
+        $inputData = [
+            'id' => session()->get('loggedUser'),
+            'password'      => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+        ];
+        $updating = $accountModel->save($inputData);
+        session()->setFlashdata('success', 'Password berhasil diganti');
+        return redirect()->to(base_url('dashboard/password'))->withInput();
+    }
 }
