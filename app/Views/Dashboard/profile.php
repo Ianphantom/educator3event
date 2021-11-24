@@ -88,21 +88,37 @@
         <div class="separator"></div>
         <div class="row text-white justify-content-center">
             <div id="form-content" class="col-lg-10">
-                <form id=" contact-form" method="post" action="contact.php" role="form">
+                <form id=" contact-form" method="post" action="<?php echo base_url() ?>/AccountCtl/UpdatingAccount" role="form">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Username: </label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Username" required="required" data-error="Username Diperlukan" value="<?php echo $dashboard->username;?>">
+                                    <input id="form_name" type="text" name="username" class="form-control" placeholder="Masukkan Username" required="required" data-error="Username Diperlukan" value="<?php echo $dashboard->username;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Nama Bank </label>
                                     <input id="form_name" type="text" name="id" class="form-control" placeholder="Masukkan Nama Bank" required="required" data-error="Nama Bank Diperlukan" value="<?php echo $dashboard->nama_bank;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
+                            </div> -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_name">Nama Bank</label>
+                                    <select type="text" name="namaBank" class="form-control" placeholder="Pilih Nama Bank" required="required" data-error="Nama Bank Diperlukan">
+                                        <?php foreach ($banks as $bank){
+                                            if($bank['id'] == $dashboard->bank_id){ ?>
+                                                <option selected value="<?php echo $bank['id'] ?>"><?php echo htmlentities($bank['nama_bank']);?></option>
+                                        <?php }else{ ?>
+                                                <option value="<?php echo $bank['id'] ?>"><?php echo htmlentities($bank['nama_bank']);?></option>    
+                                        <?php } } ?>
+                                        </select>
+
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="row">
@@ -116,7 +132,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_need">Tanggal Lahir:</label><br>
-                                    <input id="form_name" type="date" name="name" class="form-control" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard->tgl_lahir;?>">
+                                    <input id="form_name" type="date" name="tanggal" class="form-control" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard->tgl_lahir;?>">
                                     <div id="passwordHelpBlock" class="form-text">
                                     </div>
 
@@ -130,7 +146,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Institusi </label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Nama Institusi" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard->institusi;?>">
+                                    <input id="form_name" type="text" name="institusi" class="form-control" placeholder="Masukkan Nama Institusi" required="required" data-error="Nama Institusi Diperlukan" value="<?php echo $dashboard->institusi;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -147,11 +163,17 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">Nomor Bank </label>
-                                    <input id="form_name" type="number" name="id" class="form-control" placeholder="Masukkan Nomor Bank" required="required" data-error="Nomor Bank Diperlukan" value="<?php echo $dashboard->bank_nomor;?>">
+                                    <input id="form_name" type="number" name="norek" class="form-control" placeholder="Masukkan Nomor Bank" required="required" data-error="Nomor Bank Diperlukan" value="<?php echo $dashboard->bank_nomor;?>">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_name">Nama Rekening </label>
+                                    <input id="form_name" type="text" name="namerek" class="form-control" placeholder="Masukkan Rekening" required="required" data-error="Nama Bank Diperlukan" value="<?php echo $dashboard->bank_nama;?>">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-row justify-content-center py-3">
                             <div>
