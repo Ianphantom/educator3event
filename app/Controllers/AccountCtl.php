@@ -18,7 +18,7 @@ class AccountCtl extends BaseController
     {
         $userModel = new AccountModel();
         $user = $userModel->where("username", $this->request->getVar('username'))->first();
-        if(!$user){
+        if(!$user){ 
             session()->setFlashdata('fail', 'email atau password salah');
             return redirect()->to(base_url('login'))->withInput();
         }
@@ -84,5 +84,23 @@ class AccountCtl extends BaseController
         $accountModel = new AccountModel();
         $registering = $accountModel->save($inputData);
         return redirect()->to(base_url('/login'))->with('success', 'Pendaftaran akun berhasil');
+    }
+
+    public function updatingAccount()
+    {
+        $inputData = [
+            'username'      => $this->request->getVar('username'),
+            'password'      => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'nama_lengkap'  => $this->request->getVar('name'),
+            'tgl_lahir'     => $this->request->getVar('tanggal'),
+            'institusi'     => $this->request->getVar('institusi'),
+            'whatsapp'      => $this->request->getVar('phone'),
+            'bank_id'       => $this->request->getVar('namaBank'),
+            'bank_nomor'    => $this->request->getVar('norek'),
+            'bank_nama'     => $this->request->getVar('namerek'),
+        ];
+        $accountModel = new AccountModel();
+        $updating = $accountModel->update(session()->get('loggedUser'),$inputData);
+        return redirect()->to(base_url('dashboard/profile'));
     }
 }
