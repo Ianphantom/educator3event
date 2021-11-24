@@ -35,5 +35,22 @@ class EventCtl extends BaseController
         return redirect()->to(base_url('panel/event'))->with('success', 'Berhasil menghapus event');
     }
 
-    
+    public function updatingEvent($seg1 = false)
+    {
+        $eventModel = new EventModel();
+        $inputData = [
+            'id' => $seg1,
+            'nama_eo'      => $this->request->getVar('namaeo'),
+            'nama_acara'  => $this->request->getVar('namacara'),
+            'deskripsi'     => $this->request->getVar('desc'),
+            'kuota'     => $this->request->getVar('kuota'),
+            'harga_normal'      => $this->request->getVar('harga'),
+            'harga_referral'       => $this->request->getVar('referal'),
+            'komisi_referral'       => $this->request->getVar('komisi'),
+        ];
+        $inputing = $eventModel->save($inputData);
+        return redirect()->to(base_url('panel/event'))->with('success', 'Berhasil memperbarui event');
+    }
+
+
 }
