@@ -25,7 +25,6 @@ class DashboardCtl extends BaseController
     public function password()
     {
         $AccountModel = new AccountModel();
-        $bankModel = new BankModel();
         $id = session()->get('loggedUser');
         $dashboard = $AccountModel->where('id', session()->get('loggedUser'))->first();
         $data = [
