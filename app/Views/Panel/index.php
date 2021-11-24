@@ -19,6 +19,23 @@
                         <h1 class="text-white">Selamat datang di EDUCATOR PANEL!</h1>
                         <p class="text-lead text-white">Masukan detail anda pada form dibawah.</p>
                     </div>
+                    <br>
+                    <?php if(!empty(session()->getFlashdata('success'))){?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Selamat! </strong><?php echo htmlentities(session()->getFlashdata('success')); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php } ?>
+                    <?php if(!empty(session()->getFlashdata('fail'))){?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Maaf! </strong><?php echo htmlentities(session()->getFlashdata('fail')); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
