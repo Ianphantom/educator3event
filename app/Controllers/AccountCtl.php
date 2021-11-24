@@ -36,6 +36,7 @@ class AccountCtl extends BaseController
     public function logout(){
         if(session()->has('loggedUser')){
             session()->remove('loggedUser');
+            session()->destroy();
             return redirect()->to(base_url('login'));
         }
     }
