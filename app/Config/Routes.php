@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 $routes->get('login', 'AccountCtl::login');
 $routes->get('register', 'AccountCtl::register');
 $routes->get('dashboard/profile', 'DashboardCtl::profile' , ['filter' => 'auth']);
+$routes->get('dashboard/password', 'DashboardCtl::password' , ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
