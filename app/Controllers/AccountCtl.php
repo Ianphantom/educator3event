@@ -88,9 +88,11 @@ class AccountCtl extends BaseController
 
     public function updatingAccount()
     {
+        $userModel = new AccountModel();
+        $user = $userModel->where("id", session()->get('loggedUser'))->first();
         $inputData = [
             'username'      => $this->request->getVar('username'),
-            'password'      => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'password'      => $user['password'],
             'nama_lengkap'  => $this->request->getVar('name'),
             'tgl_lahir'     => $this->request->getVar('tanggal'),
             'institusi'     => $this->request->getVar('institusi'),
