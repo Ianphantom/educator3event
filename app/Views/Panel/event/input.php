@@ -11,7 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/dashboard.css">
 
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
@@ -36,7 +36,7 @@
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="index.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url('panel/event') ?>" class="nav-link text-dark bg-light">
                     <i class="fa fa-calendar mr-3 text-primary fa-fw"></i>
                     <span>Event</span>
                 </a>
@@ -60,20 +60,20 @@
         <div class="separator"></div>
         <div class="row text-white justify-content-center">
             <div id="form-content" class="col-lg-10">
-                <a href="input.php" class="btn btn-light bg-white btn-md mb-3 font-weight-bold">Tambah Event</a>
-                <form id=" contact-form" method="post" action="contact.php" role="form">
+                <!-- <a href="input.php" class="btn btn-light bg-white btn-md mb-3 font-weight-bold">Tambah Event</a> -->
+                <form id=" contact-form" method="post" action="<?php echo base_url() ?>/EventCtl/inputingEvent" role="form">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nama EO: </label>
-                                <input type="text" name="name" class="form-control" placeholder="Masukkan Nama EO" required="required" data-error="Username Diperlukan">
+                                <input type="text" name="namaeo" class="form-control" placeholder="Masukkan Nama EO" required="required" data-error="NamaEO Diperlukan">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nama Acara: </label>
-                                <input type="text" name="surname" class="form-control" placeholder="Masukkan Nama Acara" required="required" data-error="Password Diperlukan">
+                                <input type="text" name="namacara" class="form-control" placeholder="Masukkan Nama Acara" required="required" data-error="Nama Acara Diperlukan">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -82,14 +82,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Jumlah Kuota: </label>
-                                <input type="number" name="name" class="form-control" placeholder="Masukkan Jumlah Kuota" required="required" data-error="Nama Lengkap Diperlukan">
+                                <input type="number" name="kuota" class="form-control" placeholder="Masukkan Jumlah Kuota" required="required" data-error="kuota Diperlukan">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Harga Normal: </label>
-                                <input type="number" name="name" class="form-control" placeholder="Masukkan Harga Normal" required="required" data-error="Nama Lengkap Diperlukan">
+                                <input type="number" name="harga" class="form-control" placeholder="Masukkan Harga Normal" required="required" data-error="Harga Diperlukan">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -98,14 +98,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Harga Referal: </label>
-                                <input type="number" name="name" class="form-control" placeholder="Masukkan Harga Referal" required="required" data-error="Nama Lengkap Diperlukan">
+                                <input type="number" name="referal" class="form-control" placeholder="Masukkan Harga Referal" required="required" data-error="Referal Diperlukan">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Komisi Referal: </label>
-                                <input type="number" name="name" class="form-control" placeholder="Masukkan Harga Referal" required="required" data-error="Nama Lengkap Diperlukan">
+                                <input type="number" name="komisi" class="form-control" placeholder="Masukkan Harga Referal" required="required" data-error="komisi Diperlukan">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="form_name">Deskripsi: </label>
-                                <textarea rows="15" type="text" name="desc" class="form-control" required="required" data-error="Nama Bank Diperlukan"></textarea>
+                                <textarea rows="15" type="text" name="desc" class="form-control" required="required" data-error="Deskripsi Diperlukan"></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -129,7 +129,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-light bg-white btn-md mb-3 font-weight-bold">Tambah Event</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -11,7 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/dashboard.css">
 
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
@@ -36,7 +36,7 @@
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="index.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url('panel/event') ?>" class="nav-link text-dark bg-light">
                     <i class="fa fa-calendar mr-3 text-primary fa-fw"></i>
                     <span>Event</span>
                 </a>
@@ -58,11 +58,28 @@
         <h2 class="display-4 text-white">Halo Admin </h2>
         <p class="lead text-white mb-0">Silahkan tambahkan dan update event jika perlu.</p>
         <div class="separator"></div>
+        <br>
+        <?php if(!empty(session()->getFlashdata('success'))){?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Selamat! </strong><?php echo htmlentities(session()->getFlashdata('success')); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php } ?>
+        <?php if(!empty(session()->getFlashdata('fail'))){?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Maaf! </strong><?php echo htmlentities(session()->getFlashdata('fail')); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php } ?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
 
-                    <a href="input.php" class="btn btn-light bg-white btn-md mb-3 font-weight-bold">Tambah Event</a>
+                    <a href="<?php echo base_url('panel/event/input') ?>" class="btn btn-light bg-white btn-md mb-3 font-weight-bold">Tambah Event</a>
                     <table id="example" class="display responsive nowrap" style="width: 100%">
                         <thead class="table-light">
                             <tr>
@@ -77,43 +94,26 @@
                         </thead>
 
                         <tbody class="table-light">
-                            <tr>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col d-flex justify-content-center">
-                                            <a href="edit.php" class="btn btn-sm btn-warning">Update</a>
+                        <?php foreach ($event as $e) : ?>
+                                <tr>
+                                    <td><?= $e['nama_eo']?></td>
+                                    <td><?= $e['nama_acara']?></td>
+                                    <td><?= $e['kuota']?></td>
+                                    <td><?= $e['harga_normal']?></td>
+                                    <td><?= $e['harga_referral']?></td>
+                                    <td><?= $e['komisi_referral']?></td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col d-flex justify-content-center">
+                                                <a href="<?php echo base_url() ?>/panel/event/edit/<?php echo $e["id"] ?>" class="btn btn-sm btn-warning">Update</a>
+                                            </div>
+                                            <div class="col d-flex justify-content-center">
+                                                <a href="<?php echo base_url() ?>/EventCtl/deletingEvent/<?php echo $e["id"] ?>" class="btn btn-sm btn-danger">Delete</a>
+                                            </div>
                                         </div>
-                                        <div class="col d-flex justify-content-center">
-                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>Contoh</td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col d-flex justify-content-center">
-                                            <a href="edit.php" class="btn btn-sm btn-warning">Update</a>
-                                        </div>
-                                        <div class="col d-flex justify-content-center">
-                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                        <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>

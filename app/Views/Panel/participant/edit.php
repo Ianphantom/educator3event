@@ -36,7 +36,7 @@
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="index.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url('panel/event') ?>" class="nav-link text-dark bg-light">
                     <i class="fa fa-calendar mr-3 text-primary fa-fw"></i>
                     <span>Event</span>
                 </a>
