@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AdminModel;
 
 class AdminCtl extends BaseController
 {
@@ -13,6 +14,7 @@ class AdminCtl extends BaseController
 
     public function loggingAccount()
     {
+        // password = inimerupakanakunadmin
         $userModel = new AdminModel();
         $user = $userModel->where("username", $this->request->getVar('username'))->first();
         if(!$user){ 
@@ -28,5 +30,10 @@ class AdminCtl extends BaseController
         $user_id = $user['id'];
         session()->set('loggedUser', $user_id);
         return redirect()->to(base_url('panel/event'));
+    }
+
+    public function event()
+    {
+        return view('Panel/event/index');
     }
 }
