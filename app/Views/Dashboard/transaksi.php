@@ -99,51 +99,64 @@
 </head>
 
 <body>
-    
-    <!-- Sidenav -->
     <div class="vertical-nav bg-white" id="sidebar">
-
-
         <div class="py-4 px-3 mb-4 bg-light">
             <div class="media d-flex align-items-center text-wrap" style="width: 50px; height: 50px;">
                 <img src="https://educator.co.id/assets/images/icons/username.jpg" alt="" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-                <div class="media-body">
-                    <h5 class="m-0">Bagus</h5>
-                    <p class="font-weight-normal text-muted mb-0">BCA</p>
-                </div>
+                    <div class="media-body">
+                        <h5 class="m-0 small"><?php echo $dashboard->nama_lengkap; ?></h5>
+                        <p class="font-weight-normal text-muted mb-0"><?php echo $dashboard->nama_bank; ?></p>
+                    </div>
             </div><!-- az-img-user -->
         </div>
 
-        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Dashboard</p>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Akun Anda</p>
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="../Dashboard/profile.php" class="nav-link text-dark bg-light">
-                    <i class="fa fa-home mr-3 text-primary fa-fw"></i>
-                    <span>Edit Profile</span>
+                <a href="<?php echo base_url() ?>/dashboard/profile" class="nav-link text-dark bg-light">
+                    <i class="fa fa-edit mr-3 text-primary fa-fw"></i>
+                    <span>Ubah Profile</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark bg-light">
-                    <i class="fa fa-bolt mr-3 text-primary fa-fw"></i>
-                    <span>Referal Saya</span>
+                <a href="<?php echo base_url() ?>/dashboard/password" class="nav-link text-dark bg-light">
+                    <i class="fa fa-key mr-3 text-primary fa-fw"></i>
+                    <span>Ubah Password</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark bg-light">
-                    <i class="fa fa-shopping-cart mr-3 text-primary fa-fw"></i>
-                    <span>Transaksi Saya</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/AccountCtl/logout" class="nav-link text-dark bg-light">
                     <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>
                     <span>Logout</span>
                 </a>
             </li>
         </ul>
+        <br />
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Lainnya</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="<?= base_url('/') ?>" class="nav-link text-dark bg-light">
+                    <i class="fas fa-home mr-3 text-primary fa-fw"></i>
+                    <span>Beranda</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url() ?>/dashboard/referal" class="nav-link text-dark bg-light">
+                    <i class="fa fa-bolt mr-3 text-primary fa-fw"></i>
+                    <span>Referal Saya</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url() ?>/dashboard/transaksi" class="nav-link text-dark bg-light">
+                    <i class="fa fa-shopping-cart mr-3 text-primary fa-fw"></i>
+                    <span>Transaksi Saya</span>
+                </a>
+            </li>
+        </ul>
+
     </div>
-    
     <!-- Main content -->
     <div class="page-content p-5" id="content">
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">

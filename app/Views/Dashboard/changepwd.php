@@ -15,15 +15,14 @@
 </head>
 
 <body>
-    <!-- Sidenav -->
     <div class="vertical-nav bg-white" id="sidebar">
         <div class="py-4 px-3 mb-4 bg-light">
             <div class="media d-flex align-items-center text-wrap" style="width: 50px; height: 50px;">
                 <img src="https://educator.co.id/assets/images/icons/username.jpg" alt="" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-                <div class="media-body">
-                    <h5 class="m-0">Bagus</h5>
-                    <p class="font-weight-normal text-muted mb-0">BCA</p>
-                </div>
+                    <div class="media-body">
+                        <h5 class="m-0 small"><?php echo $dashboard['nama_lengkap']; ?></h5>
+                        <p class="font-weight-normal text-muted mb-0"><?php echo $dashboard['bank_nama']; ?></p>
+                    </div>
             </div><!-- az-img-user -->
         </div>
 
@@ -31,19 +30,19 @@
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="../Dashboard/profile.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/dashboard/profile" class="nav-link text-dark bg-light">
                     <i class="fa fa-edit mr-3 text-primary fa-fw"></i>
                     <span>Ubah Profile</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../Dashboard/changepwd.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/dashboard/password" class="nav-link text-dark bg-light">
                     <i class="fa fa-key mr-3 text-primary fa-fw"></i>
                     <span>Ubah Password</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/AccountCtl/logout" class="nav-link text-dark bg-light">
                     <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>
                     <span>Logout</span>
                 </a>
@@ -54,19 +53,19 @@
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="../index.php" class="nav-link text-dark bg-light">
+                <a href="<?= base_url('/') ?>" class="nav-link text-dark bg-light">
                     <i class="fas fa-home mr-3 text-primary fa-fw"></i>
                     <span>Beranda</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../Dashboard/referal.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/dashboard/referal" class="nav-link text-dark bg-light">
                     <i class="fa fa-bolt mr-3 text-primary fa-fw"></i>
                     <span>Referal Saya</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="transaksi.php" class="nav-link text-dark bg-light">
+                <a href="<?php echo base_url() ?>/dashboard/transaksi" class="nav-link text-dark bg-light">
                     <i class="fa fa-shopping-cart mr-3 text-primary fa-fw"></i>
                     <span>Transaksi Saya</span>
                 </a>
