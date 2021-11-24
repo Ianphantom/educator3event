@@ -38,6 +38,8 @@ $routes->get('dashboard/profile', 'DashboardCtl::profile' , ['filter' => 'auth']
 $routes->get('dashboard/password', 'DashboardCtl::password' , ['filter' => 'auth']);
 $routes->get('panel/event', 'AdminCtl::event' , ['filter' => 'auth']);
 $routes->get('panel/participant', 'AdminCtl::participant' , ['filter' => 'auth']);
+$routes->get('panel/event/edit/(:any)', 'AdminCtl::editEvent' , ['filter' => 'auth']);
+$routes->get('panel/event/input', 'AdminCtl::inputEvent' , ['filter' => 'auth']);
 $routes->get('panel', 'AdminCtl::index' );
 
 
