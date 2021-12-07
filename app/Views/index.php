@@ -50,11 +50,11 @@
             <a href="#">Sign-up</a>
             <a href="#">Login</a>
             -->
-            <?php 
-                if(session()->has('loggedUser')){ ?>
-                    <a href="<?php echo base_url('dashboard/profile') ?>">Dashboard</a>
-            <?php }else{ ?>
-                    <a href="<?php echo base_url('login') ?>">Login</a>
+            <?php
+            if (session()->has('loggedUser')) { ?>
+                <a href="<?php echo base_url('dashboard/profile') ?>">Dashboard</a>
+            <?php } else { ?>
+                <a href="<?php echo base_url('login') ?>">Login</a>
             <?php } ?>
         </div>
 
@@ -87,11 +87,11 @@
                         <?php foreach ($event as $e) : ?>
                             <tbody class="table-light">
                                 <tr>
-                                    <td><?= $e['nama_acara']?></td>
-                                    <td><?= $e['kuota']?></td>
-                                    <td><?= $e['harga_normal']?></td>
-                                    <td><?= $e['harga_referral']?></td>
-                                    <td><?= $e['komisi_referral']?></td>
+                                    <td><?= $e['nama_acara'] ?></td>
+                                    <td><?= $e['kuota'] ?></td>
+                                    <td><?= "Rp. " . number_format($e['harga_normal'], 2, ",", "."); ?></td>
+                                    <td><?= "Rp. " . number_format($e['harga_referral'], 2, ",", "."); ?></td>
+                                    <td><?= "Rp. " . number_format($e['komisi_referral'], 2, ",", "."); ?></td>
                                     <td>
                                         <div class="row">
                                             <i class="fa fa-shopping-cart" style="font-size:30px;color:black"></i>

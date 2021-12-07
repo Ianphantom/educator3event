@@ -61,7 +61,7 @@
         <div class="row text-white justify-content-center">
             <div id="form-content" class="col-lg-10">
                 <!-- <a href="edit.php" class="btn btn-light bg-white btn-md mb-3 font-weight-bold">Update Event</a> -->
-                <form id=" contact-form" method="post" action="<?php echo base_url() ?>/EventCtl/updatingEvent/<?php echo $event["id"] ?>" role="form">
+                <form id="contact-form" method="post" action="<?php echo base_url() ?>/EventCtl/updatingEvent/<?php echo $event["id"] ?>" role="form">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -115,7 +115,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="form_name">Deskripsi: </label>
-                                <textarea rows="15" type="text"  name="desc" class="form-control" required="required" data-error="Deskripsi Diperlukan"><?php echo $event['deskripsi'] ?></textarea>
+                                <textarea rows="15" type="text" name="desc" class="form-control" required="required" data-error="Deskripsi Diperlukan"><?php echo $event['deskripsi'] ?></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

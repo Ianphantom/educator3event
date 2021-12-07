@@ -20,113 +20,121 @@
 
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2 py-5">
-                        <?php if($error != ""){ ?>
-                            <div class="alert alert-danger text-center" role="alert">
-                                <?php foreach($error as $err){ ?>
-                                    <?php echo htmlentities($err); ?><br>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <form id="contact-form" method="post" action="<?php echo base_url() ?>/AccountCtl/registeringAccount" role="form">
-                            <center><h2 class="font-weight-bold">Formulir Pendaftaran</h2></center><br><hr><br>
+                        <form method="post" action="/AccountCtl/registeringAccount">
+                            <center>
+                                <h2 class="font-weight-bold">Formulir Pendaftaran</h2>
+                            </center><br>
+                            <hr><br>
                             <center><img src="../../assets/img/favicon.ico" class="w-25" /></center><br><br>
                             <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">Username: </label>
-                                            <input id="form_name" type="text" name="username" class="form-control" placeholder="Masukkan Username" required="required" data-error="Username Diperlukan">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_lastname">Password: </label>
-                                            <input id="form_lastname" type="password" name="password" class="form-control" placeholder="Masukkan Password " required="required" data-error="Password Diperlukan">
-                                            <div class="help-block with-errors"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="username">Username: </label>
+                                        <input id="username" type="text" name="username" class="form-control <?= $validation->hasError('username') ? 'is-invalid' : ''; ?>" placeholder=" Masukkan Username" value="<?= old('username') ?>" autofocus>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('username'); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_email">Nama Lengkap: </label>
-                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Masukkan Nama Lengkap" required="required" data-error="Nama Lengkap Diperlukan">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                                <label for="form_need">Tanggal Lahir:</label><br>
-                                                <input id="form_name" type="date" name="tanggal"  class="form-control" required="required" data-error="Nama Institusi Diperlukan">    
-                                                <div id="passwordHelpBlock" class="form-text">
-                                                </div>
-    
-                                                <!-- date -->
-                                            </select>
-                                            <div class="help-block with-errors"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password">Password: </label>
+                                        <input id="password" type="password" name="password" class="form-control <?= $validation->hasError('username') ? 'is-invalid' : ''; ?>" placeholder="Masukkan Password">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password'); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">Institusi </label>
-                                            <input id="form_name" type="text" name="institusi" class="form-control" placeholder="Masukkan Nama Institusi" required="required" data-error="Nama Institusi Diperlukan">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_lastname">Whatsapp: </label>
-                                            <input id="form_lastname" type="number" name="phone" class="form-control" placeholder="Masukkan Nomor Handphone Anda" required="required" data-error="Nomor Handphone Diperlukan">
-                                            <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Nama Lengkap: </label>
+                                        <input id="name" type="text" name="name" class="form-control <?= $validation->hasError('name') ? 'is-invalid' : ''; ?>" placeholder="Masukkan Nama Lengkap" value="<?= old('name') ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('name'); ?>
                                         </div>
                                     </div>
                                 </div>
-    
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">Nama Bank</label>
-                                            <select type="text" name="namaBank" class="form-control" placeholder="Pilih Nama Bank" required="required" data-error="Nama Bank Diperlukan">
-                                                <!-- isi nama bank nya disini -->
-                                                <?php foreach ($banks as $bank){ ?>
-                                                    <option value="<?php echo $bank['id'] ?>"><?php echo htmlentities($bank['nama_bank']);?></option>    
-                                                <?php } ?>
-                                                  <!-- <option value="a">sample bank</option>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tanggal">Tanggal Lahir:</label><br>
+                                        <input id="tanggal" type="date" name="tanggal" class="form-control <?= $validation->hasError('tanggal') ? 'is-invalid' : '' ?>" value="<?= old('tanggal') ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tanggal'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="institusi">Institusi </label>
+                                        <input id="institusi" type="text" name="institusi" class="form-control <?= $validation->hasError('institusi') ? 'is-invalid' : '' ?>" placeholder="Masukkan Nama Institusi" value="<?= old('institusi') ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('institusi'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Whatsapp: </label>
+                                        <input id="phone" type="text" name="phone" class="form-control <?= $validation->hasError('phone') ? 'is-invalid' : '' ?>" placeholder="Masukkan Nomor Handphone Anda" value="<?= old('phone') ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('phone'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="namaBank">Nama Bank</label>
+                                        <select type="text" name="namaBank" class="form-control <?= $validation->hasError('namaBank') ? 'is-invalid' : '' ?>" placeholder="Pilih Nama Bank">
+                                            <!-- isi nama bank nya disini -->
+
+                                            <?php foreach ($banks as $bank) { ?>
+                                                <option value="<?php echo $bank['id'] ?>"><?php echo htmlentities($bank['nama_bank']); ?></option>
+                                            <?php } ?>
+                                            <!-- <option value="a">sample bank</option>
                                                   <option value="b">sample bank</option>
                                                   <option value="c">sample bank</option>
                                                   <option value="d">sample bank</option>
                                                   <option value="e">sample bank</option> -->
-                                                </select>
-
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">Nomor Rekening </label>
-                                            <input id="form_name" type="number" name="norek" class="form-control" placeholder="Masukkan Rekening" required="required" data-error="Nomor Bank Diperlukan">
-                                            <div class="help-block with-errors"></div>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('namaBank'); ?>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">Nama Rekening </label>
-                                            <input id="form_name" type="text" name="namerek" class="form-control" placeholder="Masukkan Rekening" required="required" data-error="Nama Bank Diperlukan">
-                                            <div class="help-block with-errors"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="norek">Nomor Rekening </label>
+                                        <input id="norek" type="text" name="norek" class="form-control <?= $validation->hasError('norek') ? 'is-invalid' : '' ?>" placeholder="Masukkan Rekening" value="<?= old('norek') ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('norek'); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row text-center py-3">
-                                    <div class=" col-lg 10">
-                                        <button style="height: 50px;width: 20%;border: none;outline: none;border-radius: 60px;font-weight: 600;background: #1f9288;color: white;" >Daftar</button>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="namerek">Nama Rekening </label>
+                                        <input id="namerek" type="text" name="namerek" class="form-control <?= $validation->hasError('namerek') ? 'is-invalid' : '' ?>" placeholder="Masukkan Rekening" value="<?= old('namerek') ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('namerek'); ?>
+                                        </div>
                                     </div>
-                                </div>               
+                                </div>
+                            </div>
+                            <div class="form-row text-center py-3">
+                                <div class=" col-lg 10">
+                                    <button style="height: 50px;width: 20%;border: none;outline: none;border-radius: 60px;font-weight: 600;background: #1f9288;color: white;" type="submit">Daftar</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

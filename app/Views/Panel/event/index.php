@@ -59,7 +59,7 @@
         <p class="lead text-white mb-0">Silahkan tambahkan dan update event jika perlu.</p>
         <div class="separator"></div>
         <br>
-        <?php if(!empty(session()->getFlashdata('success'))){?>
+        <?php if (!empty(session()->getFlashdata('success'))) { ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Selamat! </strong><?php echo htmlentities(session()->getFlashdata('success')); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -67,7 +67,7 @@
                 </button>
             </div>
         <?php } ?>
-        <?php if(!empty(session()->getFlashdata('fail'))){?>
+        <?php if (!empty(session()->getFlashdata('fail'))) { ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Maaf! </strong><?php echo htmlentities(session()->getFlashdata('fail')); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -94,14 +94,14 @@
                         </thead>
 
                         <tbody class="table-light">
-                        <?php foreach ($event as $e) : ?>
+                            <?php foreach ($event as $e) : ?>
                                 <tr>
-                                    <td><?= $e['nama_eo']?></td>
-                                    <td><?= $e['nama_acara']?></td>
-                                    <td><?= $e['kuota']?></td>
-                                    <td><?= $e['harga_normal']?></td>
-                                    <td><?= $e['harga_referral']?></td>
-                                    <td><?= $e['komisi_referral']?></td>
+                                    <td><?= $e['nama_eo'] ?></td>
+                                    <td><?= $e['nama_acara'] ?></td>
+                                    <td><?= $e['kuota'] ?></td>
+                                    <td><?= "Rp. " . number_format($e['harga_normal'], 2, ",", "."); ?></td>
+                                    <td><?= "Rp. " . number_format($e['harga_referral'], 2, ",", "."); ?></td>
+                                    <td><?= "Rp. " . number_format($e['komisi_referral'], 2, ",", "."); ?></td>
                                     <td>
                                         <div class="row">
                                             <div class="col d-flex justify-content-center">
@@ -113,7 +113,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                        <?php endforeach ?>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>

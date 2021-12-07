@@ -28,7 +28,7 @@
         <section class="row justify-content-center">
             <section class="col-12 col-sm-6 col-md-3">
                 <br>
-                <?php if(!empty(session()->getFlashdata('success'))){?>
+                <?php if (!empty(session()->getFlashdata('success'))) { ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Selamat! </strong><?php echo htmlentities(session()->getFlashdata('success')); ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -36,7 +36,7 @@
                         </button>
                     </div>
                 <?php } ?>
-                <?php if(!empty(session()->getFlashdata('fail'))){?>
+                <?php if (!empty(session()->getFlashdata('fail'))) { ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Maaf! </strong><?php echo htmlentities(session()->getFlashdata('fail')); ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
