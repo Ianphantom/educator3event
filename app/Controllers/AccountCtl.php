@@ -8,7 +8,7 @@ use App\Models\BankModel;
 
 class AccountCtl extends BaseController
 {
-    
+
     public function login()
     {
         return view('login/login');
@@ -18,12 +18,12 @@ class AccountCtl extends BaseController
     {
         $userModel = new AccountModel();
         $user = $userModel->where("username", $this->request->getVar('username'))->first();
-        if(!$user){ 
+        if (!$user) {
             session()->setFlashdata('fail', 'email atau password salah');
             return redirect()->to(base_url('login'))->withInput();
         }
         $verify = password_verify($this->request->getVar('password'), $user['password']);
-        if(!$verify){
+        if (!$verify) {
             session()->setFlashdata('fail', 'email atau password salah');
             return redirect()->to(base_url('login'))->withInput();
         }
@@ -33,8 +33,9 @@ class AccountCtl extends BaseController
         return redirect()->to(base_url('dashboard/profile'));
     }
 
-    public function logout(){
-        if(session()->has('loggedUser')){
+    public function logout()
+    {
+        if (session()->has('loggedUser')) {
             session()->remove('loggedUser');
             session()->destroy();
             return redirect()->to(base_url('login'));
@@ -46,30 +47,43 @@ class AccountCtl extends BaseController
         $bankModel = new BankModel();
         $bank = $bankModel->findAll();
         $data = [
+            'validation' => \Config\Services::validation(),
             'banks' => $bank,
-            'error' => '',
         ];
         return view('login/regitration/regist', $data);
     }
 
     public function registeringAccount()
     {
-        helper(['form']);
-        $rules = [
-            'username' => 'is_unique[akun.username]|min_length[3]',
-            'password' => 'min_length[3]',
-        ];
+        // $rules = [
+        //     'username' => 'is_unique[akun.username]|min_length[3]|required',
+        //     'password' => 'min_length[3]',
+        // ];
         $bankModel = new BankModel();
         $bank = $bankModel->findAll();
-        
-        if(!$this-> validate($rules)){
-            $error = $this->validator->getErrors();
-            $data = [
-                'banks' => $bank,
-                'error' => $error,
-            ];
-            return view('login/regitration/regist', $data);
+
+        if (!$this->validate([
+            'username' => 'required|is_unique[akun.username]|min_length[3]|alpha_numeric',
+            'password' => 'required|min_length[8]',
+            'name' => 'required|alpha_space',
+            'tanggal' => 'required|valid_date',
+            'institusi' => 'required',
+            'phone' => 'required|numeric',
+            'namaBank' => 'required|alpha_numeric',
+            'norek' => 'required|numeric',
+            'namerek' => 'required|alpha_space'
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/register')->withInput()->with('validation', $validation);
         }
+        // if (!$this->validate($rules)) {
+        //     $error = $this->validator->getErrors();
+        //     $data = [
+        //         'banks' => $bank,
+        //         'error' => $error,
+        //     ];
+        //     return view('login/regitration/regist', $data);
+        // }
         $inputData = [
             'username'      => $this->request->getVar('username'),
             'password'      => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
@@ -90,6 +104,20 @@ class AccountCtl extends BaseController
     {
         $userModel = new AccountModel();
         $user = $userModel->where("id", session()->get('loggedUser'))->first();
+        if (!$this->validate([
+            'username' => 'min_length[3]|alpha_numeric',
+            'name' => 'alpha_space',
+            'tanggal' => 'valid_date',
+            'institusi' => 'required',
+            'phone' => 'numeric',
+            'namaBank' => 'alpha_numeric',
+            'norek' => 'numeric',
+            'namerek' => 'alpha_space'
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/dashboard/profile')->withInput()->with('validation', $validation);
+        }
+
         $inputData = [
             'username'      => $this->request->getVar('username'),
             'password'      => $user['password'],
@@ -102,7 +130,8 @@ class AccountCtl extends BaseController
             'bank_nama'     => $this->request->getVar('namerek'),
         ];
         $accountModel = new AccountModel();
-        $updating = $accountModel->update(session()->get('loggedUser'),$inputData);
+        $updating = $accountModel->update(session()->get('loggedUser'), $inputData);
+        session()->setFlashdata('pesan', 'Data berhasil diubah!');
         return redirect()->to(base_url('dashboard/profile'));
     }
 
@@ -115,7 +144,7 @@ class AccountCtl extends BaseController
 
         $accountModel = new AccountModel();
         // verifikasi Password 3 huruf
-        if(!$this-> validate($rules)){
+        if (!$this->validate($rules)) {
             session()->setFlashdata('fail', 'Password harus lebih dari 3 karakter');
             return redirect()->to(base_url('dashboard/password'))->withInput();
         }
@@ -124,7 +153,7 @@ class AccountCtl extends BaseController
         $id = session()->get('loggedUser');
         $user = $accountModel->where('id', session()->get('loggedUser'))->first();
         $verify = password_verify($this->request->getVar('password-lama'), $user['password']);
-        if(!$verify){
+        if (!$verify) {
             session()->setFlashdata('fail', 'Password lama anda salah!');
             return redirect()->to(base_url('dashboard/password'))->withInput();
         }
