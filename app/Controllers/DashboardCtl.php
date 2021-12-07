@@ -18,6 +18,7 @@ class DashboardCtl extends BaseController
         $data = [
             'data' => $dashboard,
             'banks' => $bank,
+            'validation' => \Config\Services::validation()
         ];
         return view('dashboard/profile', $data);
     }
