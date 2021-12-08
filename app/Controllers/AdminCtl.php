@@ -18,12 +18,12 @@ class AdminCtl extends BaseController
         // password = inimerupakanakunadmin
         $userModel = new AdminModel();
         $user = $userModel->where("username", $this->request->getVar('username'))->first();
-        if(!$user){ 
+        if (!$user) {
             session()->setFlashdata('fail', 'email atau password salah');
             return redirect()->to(base_url('panel'))->withInput();
         }
         $verify = password_verify($this->request->getVar('password'), $user['password']);
-        if(!$verify){
+        if (!$verify) {
             session()->setFlashdata('fail', 'email atau password salah');
             return redirect()->to(base_url('panel'))->withInput();
         }
@@ -57,5 +57,14 @@ class AdminCtl extends BaseController
     public function inputEvent()
     {
         return view('Panel/event/input');
+    }
+
+    public function logout()
+    {
+        if (session()->has('loggedUser')) {
+            session()->remove('loggedUser');
+            session()->destroy();
+            return redirect()->to(base_url('panel'));
+        }
     }
 }

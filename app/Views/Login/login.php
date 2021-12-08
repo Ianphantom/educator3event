@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,23 +16,10 @@
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <h1 class="text-white">Selamat datang di EDUCATOR LOGIN PAGE!</h1>
-                        <?php if(!empty(session()->getFlashdata('success'))){?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Selamat! </strong><?php echo htmlentities(session()->getFlashdata('success')); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php } ?>
-                        <?php if(!empty(session()->getFlashdata('fail'))){?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Maaf! </strong><?php echo htmlentities(session()->getFlashdata('fail')); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php } ?>
+                        <h1 class="text-white">LOGIN PAGE!</h1>
+                        <!-- Sweet Alert -->
+                        <div class="swal" data-swal="<?= session()->getFlashdata('success') ?>"></div>
+                        <div class="swal-fail" data-swal="<?= session()->getFlashdata('fail') ?>"></div>
                         <p class="text-lead text-white">Masukan detail anda pada form dibawah.</p>
                     </div>
                 </div>
@@ -61,7 +47,7 @@
                     </div>
                     <div class="mt-5">
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        <p class=" mb-0 text-center" style="margin-top: 10px; font-size: 15px;">Belum punya akun?&nbsp<br /><a href="<?= base_url('register')?>" class="text-decoration-line">Daftar sekarang</a></p>
+                        <p class=" mb-0 text-center" style="margin-top: 10px; font-size: 15px;">Belum punya akun?&nbsp<br /><a href="<?= base_url('register') ?>" class="text-decoration-line">Daftar sekarang</a></p>
                     </div>
                 </form>
             </section>
@@ -84,6 +70,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="/assets/sweetalert2/sweetalert2.all.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>

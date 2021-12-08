@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\EventModel;
 
 use App\Controllers\BaseController;
@@ -25,14 +26,14 @@ class EventCtl extends BaseController
             'komisi_referral'       => $this->request->getVar('komisi'),
         ];
         $inputing = $eventModel->save($inputData);
-        return redirect()->to(base_url('panel/event'))->with('success', 'Event berhasil ditambahkan');
+        return redirect()->to(base_url('panel/event'))->with('success', 'Event berhasil ditambahkan!');
     }
 
     public function deletingEvent($seg1 = false)
     {
         $eventModel = new EventModel();
         $deleting = $eventModel->delete($seg1);
-        return redirect()->to(base_url('panel/event'))->with('success', 'Berhasil menghapus event');
+        return redirect()->to(base_url('panel/event'))->with('success', 'Data Event Berhasil dihapus!');
     }
 
     public function updatingEvent($seg1 = false)
@@ -49,8 +50,6 @@ class EventCtl extends BaseController
             'komisi_referral'       => $this->request->getVar('komisi'),
         ];
         $inputing = $eventModel->save($inputData);
-        return redirect()->to(base_url('panel/event'))->with('success', 'Berhasil memperbarui event');
+        return redirect()->to(base_url('panel/event'))->with('success', 'Data event berhasil diubah!');
     }
-
-
 }
